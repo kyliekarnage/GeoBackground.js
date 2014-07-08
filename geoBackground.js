@@ -1,5 +1,16 @@
 function errorPosition() {
- 				alert('The page could not get your location.');
+ 				//alert('The page could not get your location.');
+ 				defaultCity = 'Los Angeles';
+				defaultRegion = 'California';
+				function getDefaultImage() {
+							$.ajax ({
+								type: 'GET',
+								crossDomain: true,
+									dataType: 'jsonp',
+								url: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgtype=photo&safe=active&imgsz=xxlarge&q='+defaultCity+'+'+defaultRegion
+							}).done(function(response) {var googleBackground=(response.responseData.results[0].url);$('body').css('background-image','url('+googleBackground+')');$('body').css('background-size','cover');});
+				}
+				getDefaultImage();
 }
 
 var options = {
@@ -39,4 +50,3 @@ function success(pos) {
 };
 
 navigator.geolocation.getCurrentPosition(success, errorPosition, options);
-
