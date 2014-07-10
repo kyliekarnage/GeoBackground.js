@@ -9,8 +9,6 @@ function getGeoBackground(){
 		maximumAge: 0
 	};
 
-	console.log(randNum);
-
 	function errorPosition() {
  		
  		console.log('The page could not get your location.');
